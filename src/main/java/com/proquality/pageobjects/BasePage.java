@@ -3,6 +3,7 @@ package com.proquality.pageobjects;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage {
@@ -11,9 +12,11 @@ public abstract class BasePage {
 
     public BasePage() {
         if (driver == null) {
-            WebDriverManager.chromedriver().avoidBrowserDetection().setup();
+            // WebDriverManager.chromedriver().avoidBrowserDetection().setup();
             // WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            WebDriverManager.firefoxdriver().avoidBrowserDetection().setup();
+            // driver = new ChromeDriver();
+            driver = new FirefoxDriver();
         }
         PageFactory.initElements(driver, this);
     }
